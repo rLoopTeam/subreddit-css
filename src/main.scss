@@ -1,0 +1,15 @@
+@import 'vars';
+@import 'linksort';
+@import 'flair';
+
+@mixin team($team) {
+	@include linksort($team);
+	@include flair($team);
+}
+
+@include team($PR);
+@include team($MFG);
+@include team($ENG);
+@include team($Admin);
+@include team($ALL);
+@include team($PM);

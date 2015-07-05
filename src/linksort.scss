@@ -1,0 +1,29 @@
+@import 'vars';
+
+@mixin linksort($group) {
+ 	.side a[href*='##{map-get($group, "lang")}'] { 
+	    display: inline-block;
+	    position: relative;
+	    border: 1px solid black;
+	    font-size: 100%;
+	    padding: 10px;
+	    @if map-get($group, "color") == #FFF {
+	    	color: #000;
+	    } @else {
+		    color: #FFF;
+		}
+	    font-weight: bold;
+	    background-color: map-get($group, "color") !important;
+	    min-width: 278px;
+	    text-align: center;
+	    border-radius: 3px;
+	}
+
+	.side a[href*='##{map-get($group, "lang")}']:hover { 
+	    border-color: #FFF;
+	}
+
+	html:lang(#{map-get($group, "lang")}) .link:not(.linkflair-#{map-get($group, "name")}Team) {
+		display: none
+	}
+}
