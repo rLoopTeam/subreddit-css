@@ -1,14 +1,15 @@
 @import 'vars';
 
 @mixin flair($group) {
-	.flair#{map-get($group, "name")}Team,
+	.flair-#{map-get($group, "name")}Team,
 	// This is *WAAAAAAAAAAAYYYYYYY* too complicated... Not really sure why.
 	.linkflair-#{map-get($group, "name")}Team > div > p > .linkflairlabel:not(.linkflair-linkflair), // Normal. Complex trace to make flair picker work.
 	.linkflair-#{map-get($group, "name")}Team.linkflairlabel, // For when flair has been changed [Doesn't work due to reddit bug]
 	.linkflair-#{map-get($group, "name")}Team > .linkflairlabel {
 	    background-color: map-get($group, "color");
 	    color:#FFF;
-	    border-color: #FFF;
+	    border-color: map-get($group, "color");
+	    border: none !important;
 	}
 }
 
@@ -20,8 +21,15 @@
     padding: 3px 5px 3px 5px;
 }
 
+.flair:before {
+	content: "" !important;
+	margin: 0 !important;
+}
+
 .flair {
-    padding: 0px 5px 0px 5px;
+    padding: 0px 0px 0px 0px;
+    padding-left: 3px;
+    padding-right: 3px;
     font-size: 11px;
     font-weight: bold;
     margin-top: 1.2rem;
