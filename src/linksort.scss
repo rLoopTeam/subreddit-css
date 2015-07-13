@@ -1,7 +1,7 @@
 @import 'vars';
 
-@mixin linksort($group) {
- 	.side a[href*='##{map-get($group, "lang")}'] { 
+@mixin sidebarButton($group) {
+	.side a[href*='##{map-get($group, "lang")}'] { 
 	    display: inline-block;
 	    position: relative;
 	    border: 1px solid black;
@@ -26,35 +26,20 @@
 		    border-color: #FFF;
 		}
 	}
+}
 
-	@if map-get($group, "name") == "Outsider" {
-		html:lang(#{map-get($group, "lang")}) .link.linkflair-#{map-get($group, "name")}Team {
-			display: none
+@mixin linksort($group) {
+	@include sidebarButton($group);
+ 	@if map-get($group, "name") == "Outsider" {
+
+		html:lang(#{map-get($group, "lang")}) {
+			@include sidebarButton($group)
 		}
 
-		.side a[href*='##{map-get($group, "lang")}S'] { 
-		    display: none;
-		}
-
-		html:lang(#{map-get($group, "lang")}) .side a[href*='##{map-get($group, "lang")}S'] { 
-		    display: inline-block !important;
-		    position: relative;
-		    border: 1px solid black;
-		    font-size: 100%;
-		    padding: 10px;
-		    @if map-get($group, "color") == #FFF {
-		    	color: #000;
-		    } @else {
-			    color: #FFF;
-			}
-		    font-weight: bold;
-		    background-color: map-get($group, "color") !important;
-		    min-width: 278px;
-		    text-align: center;
-		    border-radius: 3px;
-		}
-		html:lang(#{map-get($group, "lang")}) .side a[href*='##{map-get($group, "lang")}'] { 
-		    display: none;
+		html:not(html:lang(#{map-get($group, "lang")})) .side a[href*='##{map-get($group, "lang")}S'],
+		html:lang(#{map-get($group, "lang")}) .side a[href*='##{map-get($group, "lang")}H'],
+		html:lang(#{map-get($group, "lang")}) .link.linkflair-#{map-get($group, "name")}Team  { 
+		    display: none !important;
 		}
 
 	} @else {
