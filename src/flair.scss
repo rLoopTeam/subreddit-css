@@ -9,8 +9,12 @@
 	    background-color: map-get($group, "color");
 	    color:#FFF;
 	    border-color: map-get($group, "color");
-	    border: none !important;
+	    border: none;
 	}
+}
+
+.moderator ~ .flair {
+	display: none !important;
 }
 
 .linkflairlabel{
